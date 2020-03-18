@@ -1,0 +1,33 @@
+打开谷歌第三方ssh
+  1.先选择从浏览器打开 ssh 连接服务器
+  2.切换到 root 账号，输入代码    ： sudo -i
+  3.设置 root 密码 ： passwd
+  
+  4.开启 SSH 权限
+      CentOS 和 Debian 通用，输入以下两条命令
+      sed -i 's/PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
+      sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+      
+      Ubuntu 系统，输入以下两条命令
+      sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+      sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+      重启服务器  ：reboot
+
+Trojan脚本
+安装好 curl，若是有此环境，请跳过
+
+apt-get update -y && apt-get install curl -y    ##Ubuntu/Debian 系统安装 Curl 方法
+yum update -y && yum install curl -y            ##Centos 系统安装 Curl 方法
+有些 VPS 需要安装 XZ 压缩工具
+
+apt-get install xz-utils   #Debian/Ubuntu 安装 XZ 压缩工具命令
+yum install xz    #CentOS 安装 XZ 压缩工具
+
+Trojan 一键脚本代码：
+bash <(curl -s -L https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh)
+
+1：先按装BBR
+
+2：申请域名  ：https://www.namesilo.com/  
+
+3：后安装Trojan
